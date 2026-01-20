@@ -25,7 +25,7 @@ func Load() Config {
 	return Config{
 		Port:           getEnv("PORT", "8080"),
 		WorkerCount:    getEnvInt("WORKER_COUNT", 10),
-		QueueSize:      getEnvInt("QUEUE_SIZE", 1000), // This is now local backpressure limit
+		QueueSize:      getEnvInt("QUEUE_SIZE", 1000),
 		MaxRetries:     getEnvInt("MAX_RETRIES", 3),
 		Timeout:        getEnvDuration("TIMEOUT", 30*time.Second),
 		RedisAddr:      getEnv("REDIS_ADDR", "localhost:6379"),

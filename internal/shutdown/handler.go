@@ -27,7 +27,6 @@ func NewShutdownManager(logger *log.Logger) *ShutdownManager {
 
 // WaitForShutdown waits for shutdown signals and handles graceful shutdown
 func (sm *ShutdownManager) WaitForShutdown(ctx context.Context, server *http.Server, workerPool any) {
-	// Create a channel to receive OS signals
 	sigChan := make(chan os.Signal, 1)
 	signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
 
@@ -35,7 +34,6 @@ func (sm *ShutdownManager) WaitForShutdown(ctx context.Context, server *http.Ser
 	sig := <-sigChan
 	sm.logger.Printf("received signal: %v", sig)
 
-	// Create shutdown context with timeout
 	shutdownCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
 

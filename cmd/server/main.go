@@ -9,13 +9,14 @@ import (
 	"os"
 	"time"
 
-	"github.com/redis/go-redis/v9"
 	"webhook-processor/internal/config"
 	"webhook-processor/internal/idempotency"
 	"webhook-processor/internal/queue"
 	"webhook-processor/internal/service"
 	"webhook-processor/internal/shutdown"
 	"webhook-processor/internal/worker"
+
+	"github.com/redis/go-redis/v9"
 )
 
 // Simple inline handlers
